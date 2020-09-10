@@ -10,7 +10,7 @@ public class Jeroo extends JerooBase {
      */
     public void faceEast()
     {
-
+      
     }
 
     /**
