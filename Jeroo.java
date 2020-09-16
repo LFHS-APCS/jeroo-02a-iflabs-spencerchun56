@@ -10,7 +10,19 @@ public class Jeroo extends JerooBase {
      */
     public void faceEast()
     {
-      
+      if (isFacing(EAST)) {
+      }
+    if (isFacing(WEST)) {
+      turn(RIGHT);
+      turn(RIGHT);
+    }
+    if (isFacing(SOUTH)) {
+    turn(LEFT);
+    }
+
+    if(isFacing(NORTH)) {
+      turn(RIGHT);
+    }
     }
 
     /**
@@ -19,9 +31,33 @@ public class Jeroo extends JerooBase {
      * IMPORTANT:  Make sure the Jeroo is in its original spot and 
      *             facing its original direction when it finishes.
      */
-    public boolean isLeftBlocked()
-    {
+    public boolean isLeftBlocked() {
+      turn(LEFT);
+      hop();
+    
+    if (isLeftBlocked) {
+        return true;
+    }
+    else{
+      turn(LEFT);
+      hop();
+      return false;
+      if (isLeftBlocked){
+        turn(RIGHT);
+        turn(RIGHT);
+        hop();
+        turn(LEFT);
+        return true;
+      }
+      else{
+        turn(RIGHT);
+        turn(RIGHT);
+        hop();
+        turn(LEFT);
         return false;
+      }
+
+      }
     }
 
     /**
@@ -32,8 +68,46 @@ public class Jeroo extends JerooBase {
      * IMPORTANT:  Other than its direction, the Jeroo should finish in its original spot.
      */
     public void findNextDirection()
-    {
-
+    { hop();
+      if (isFlower(AHEAD))
+      pick();
+      turn(RIGHT);
+      turn(RIGHT);
+      hop();
+      turn(RIGHT);
+      turn(RIGHT);
+      return true;
+      hop();
+      hop();
+        if (isFlower(AHEAD)) {
+            pick();
+            turn(RIGHT);
+            turn(RIGHT);
+            hop();
+            hop();
+            turn(RIGHT);
+            turn(RIGHT);
+            return true;
+            turn(RIGHT);
+        }
+        else {
+          turn(RIGHT);
+          turn(RIGHT);
+          hop();
+          hop();
+          turn(RIGHT);
+          turn(RIGHT);
+          return false;
+          turn(LEFT);
+        }
+      else {
+        turn(RIGHT);
+        turn(RIGHT);
+        hop();
+        turn(RIGHT);
+        turn(RIGHT);
+        return false;
+      }
     }
 
     /**
@@ -46,7 +120,74 @@ public class Jeroo extends JerooBase {
      */
     public boolean isWayBlocked()
     {
+      turn(RIGHT);
+      hop();
+      if (isWayBlocked) {
+        turn(LEFT);
+        turn(LEFT);
+        hop();
+        turn(RIGHT);
+        return true;
+          turn(LEFT);
+          hop();
+          if (isWayBlocked); {
+          turn(LEFT);
+          turn(LEFT);
+          hop();
+          turn(LEFT);
+          return true;
+            hop();
+            if (isWayBlocked) {
+              turn(LEFT);
+              turn(LEFT);
+              hop();
+              turn(LEFT);
+              turn(LEFT);
+              return true;
+                turn(LEFT);
+                turn(LEFT);
+                hop();
+                if(isWayBlocked){
+                  turn(LEFT);
+                  turn(LEFT);
+                  hop();
+                  turn(LEFT);
+                  turn(LEFT);
+                  return true;
+                }
+                else {
+                  turn(LEFT);
+                  turn(LEFT);
+                  hop();
+                  return false;
+                }
+            else {
+              turn(LEFT);
+              turn(LEFT);
+              hop();
+              turn(LEFT);
+              turn(LEFT);
+              return false;
+            }
+            }
+
+          }
+          else {
+          turn(LEFT);
+          turn(LEFT);
+          hop();
+          turn(LEFT);
+          return false;
+          }
+      }
+      else {
+        turn(LEFT);
+        turn(LEFT);
+        hop();
+        turn(RIGHT);
         return false;
+      }
+      
     }
 
 
@@ -56,7 +197,30 @@ public class Jeroo extends JerooBase {
      */
     public void carpetRoom()
     {
-
+      public void carpetHelper(){
+        hop();
+        if(isWayBlocked)){
+          plant();
+          turn(LEFT);
+          turn(LEFT);
+          hop();
+          turn(LEFT);
+          turn(LEFT);
+          return true;
+          turn(RIGHT);
+          hop();
+          if(isWayBlocked)){
+            plant();
+            turn(LEFT);
+            turn(LEFT);
+            hop();
+            turn(RIGHT);
+            return true;
+            turn(LEFT);
+            hop();
+            if(isWayBlocked)){
+              plant
+            }
     }
 
 
