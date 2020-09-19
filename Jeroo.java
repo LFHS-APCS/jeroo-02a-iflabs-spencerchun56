@@ -32,33 +32,30 @@ public class Jeroo extends JerooBase {
      *             facing its original direction when it finishes.
      */
     public boolean isLeftBlocked() {
-      turn(LEFT);
-      hop();
-    
-    if (isLeftBlocked) {
-        return true;
-    }
-    else{
-      turn(LEFT);
-      hop();
-      return false;
-      if (isLeftBlocked){
-        turn(RIGHT);
-        turn(RIGHT);
-        hop();
-        turn(LEFT);
-        return true;
-      }
+       if (isWater(LEFT)) {
+          return true;
+       }
       else{
-        turn(RIGHT);
-        turn(RIGHT);
-        hop();
-        turn(LEFT);
-        return false;
+         turn(LEFT);
+         hop();
+    
+         if (isWater(AHEAD)){
+           turn(RIGHT);
+           turn(RIGHT);
+           hop();
+           turn(LEFT);
+           return true;
+        }
+        else{
+           turn(RIGHT);
+           turn(RIGHT);
+           hop();
+          turn(LEFT);
+           return false;
+        }
+ 
       }
-
-      }
-    }
+  }
 
     /**
      * Assume that a Jeroo has either 0, 1 or 2 flowers in front of it. 
@@ -68,47 +65,33 @@ public class Jeroo extends JerooBase {
      * IMPORTANT:  Other than its direction, the Jeroo should finish in its original spot.
      */
     public void findNextDirection()
-    { hop();
-      if (isFlower(AHEAD))
-      pick();
-      turn(RIGHT);
-      turn(RIGHT);
-      hop();
-      turn(RIGHT);
-      turn(RIGHT);
-      return true;
-      hop();
-      hop();
-        if (isFlower(AHEAD)) {
-            pick();
-            turn(RIGHT);
-            turn(RIGHT);
-            hop();
-            hop();
-            turn(RIGHT);
-            turn(RIGHT);
-            return true;
-            turn(RIGHT);
-        }
-        else {
-          turn(RIGHT);
-          turn(RIGHT);
-          hop();
-          hop();
-          turn(RIGHT);
-          turn(RIGHT);
-          return false;
-          turn(LEFT);
-        }
-      else {
-        turn(RIGHT);
-        turn(RIGHT);
+    { 
+      if (isFlower(AHEAD)){
         hop();
-        turn(RIGHT);
-        turn(RIGHT);
-        return false;
+        pick();
+        if(!isFlower(AHEAD)){
+          turn(RIGHT);
+          turn(RIGHT);
+          hop();
+          turn(RIGHT);
+         } else{
+           hop();
+           pick();
+           turn(RIGHT);
+           turn(RIGHT);
+           hop();
+           hop();
+           turn(LEFT);
+         }
       }
+      else{
+        turn(LEFT);
+      }
+      
+    
     }
+      
+    
 
     /**
      * Determine whether there is water on the left, right and front
@@ -120,74 +103,24 @@ public class Jeroo extends JerooBase {
      */
     public boolean isWayBlocked()
     {
-      turn(RIGHT);
-      hop();
-      if (isWayBlocked) {
-        turn(LEFT);
-        turn(LEFT);
-        hop();
-        turn(RIGHT);
-        return true;
-          turn(LEFT);
-          hop();
-          if (isWayBlocked); {
-          turn(LEFT);
-          turn(LEFT);
-          hop();
-          turn(LEFT);
-          return true;
-            hop();
-            if (isWayBlocked) {
-              turn(LEFT);
-              turn(LEFT);
-              hop();
-              turn(LEFT);
-              turn(LEFT);
-              return true;
-                turn(LEFT);
-                turn(LEFT);
-                hop();
-                if(isWayBlocked){
-                  turn(LEFT);
-                  turn(LEFT);
-                  hop();
-                  turn(LEFT);
-                  turn(LEFT);
-                  return true;
-                }
-                else {
-                  turn(LEFT);
-                  turn(LEFT);
-                  hop();
-                  return false;
-                }
-            else {
-              turn(LEFT);
-              turn(LEFT);
-              hop();
-              turn(LEFT);
-              turn(LEFT);
-              return false;
-            }
-            }
+        if(isWater(LEFT)){
+          if(isWater(RIGHT)){
+            if(isWater(AHEAD)){
+              turn(RIGHT);
+              turn(RIGHT);
+              if(isWater(AHEAD)){
+                return true;
+              } else{
+                turn(RIGHT);
+                turn(RIGHT);
+                return true;
+              }
+            } 
+          } 
+        } 
 
-          }
-          else {
-          turn(LEFT);
-          turn(LEFT);
-          hop();
-          turn(LEFT);
-          return false;
-          }
-      }
-      else {
-        turn(LEFT);
-        turn(LEFT);
-        hop();
-        turn(RIGHT);
         return false;
-      }
-      
+
     }
 
 
@@ -197,30 +130,26 @@ public class Jeroo extends JerooBase {
      */
     public void carpetRoom()
     {
-      public void carpetHelper(){
-        hop();
-        if(isWayBlocked)){
-          plant();
-          turn(LEFT);
-          turn(LEFT);
-          hop();
-          turn(LEFT);
-          turn(LEFT);
-          return true;
-          turn(RIGHT);
-          hop();
-          if(isWayBlocked)){
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+
+    }
+    public boolean carpetHelper(){
+      if(isWater(AHEAD));{
+      turn(LEFT);
+        if(isWater(AHEAD));{
+        turn(LEFT);
+          if(isWater(AHEAD));{
+            turn(LEFT);
             plant();
-            turn(LEFT);
-            turn(LEFT);
-            hop();
-            turn(RIGHT);
-            return true;
-            turn(LEFT);
-            hop();
-            if(isWayBlocked)){
-              plant
-            }
+          }
+        }
+      }
+    }
+    
+      
+        
     }
 
 
