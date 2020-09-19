@@ -133,24 +133,45 @@ public class Jeroo extends JerooBase {
       carpetHelper();
       carpetHelper();
       carpetHelper();
-
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
     }
-    public boolean carpetHelper(){
-      if(isWater(AHEAD));{
-      turn(LEFT);
-        if(isWater(AHEAD));{
+    public void carpetHelper(){
+      hop();
+      if (!isWater(LEFT)){
         turn(LEFT);
-          if(isWater(AHEAD));{
-            turn(LEFT);
-            plant();
-          }
-        }
+        hop();
+        if ( isWayBlocked()    )
+           plant();
+          turn(LEFT);
+          turn(LEFT);
+          hop();
+          turn(LEFT);
+
       }
+     
+      
     }
     
       
         
-    }
+    
 
 
 
