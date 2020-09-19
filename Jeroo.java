@@ -10,7 +10,19 @@ public class Jeroo extends JerooBase {
      */
     public void faceEast()
     {
-      
+      if (isFacing(EAST)) {
+      }
+    if (isFacing(WEST)) {
+      turn(RIGHT);
+      turn(RIGHT);
+    }
+    if (isFacing(SOUTH)) {
+    turn(LEFT);
+    }
+
+    if(isFacing(NORTH)) {
+      turn(RIGHT);
+    }
     }
 
     /**
@@ -19,10 +31,31 @@ public class Jeroo extends JerooBase {
      * IMPORTANT:  Make sure the Jeroo is in its original spot and 
      *             facing its original direction when it finishes.
      */
-    public boolean isLeftBlocked()
-    {
-        return false;
-    }
+    public boolean isLeftBlocked() {
+       if (isWater(LEFT)) {
+          return true;
+       }
+      else{
+         turn(LEFT);
+         hop();
+    
+         if (isWater(AHEAD)){
+           turn(RIGHT);
+           turn(RIGHT);
+           hop();
+           turn(LEFT);
+           return true;
+        }
+        else{
+           turn(RIGHT);
+           turn(RIGHT);
+           hop();
+          turn(LEFT);
+           return false;
+        }
+ 
+      }
+  }
 
     /**
      * Assume that a Jeroo has either 0, 1 or 2 flowers in front of it. 
@@ -32,9 +65,33 @@ public class Jeroo extends JerooBase {
      * IMPORTANT:  Other than its direction, the Jeroo should finish in its original spot.
      */
     public void findNextDirection()
-    {
-
+    { 
+      if (isFlower(AHEAD)){
+        hop();
+        pick();
+        if(!isFlower(AHEAD)){
+          turn(RIGHT);
+          turn(RIGHT);
+          hop();
+          turn(RIGHT);
+         } else{
+           hop();
+           pick();
+           turn(RIGHT);
+           turn(RIGHT);
+           hop();
+           hop();
+           turn(LEFT);
+         }
+      }
+      else{
+        turn(LEFT);
+      }
+      
+    
     }
+      
+    
 
     /**
      * Determine whether there is water on the left, right and front
@@ -46,7 +103,24 @@ public class Jeroo extends JerooBase {
      */
     public boolean isWayBlocked()
     {
+        if(isWater(LEFT)){
+          if(isWater(RIGHT)){
+            if(isWater(AHEAD)){
+              turn(RIGHT);
+              turn(RIGHT);
+              if(isWater(AHEAD)){
+                return true;
+              } else{
+                turn(RIGHT);
+                turn(RIGHT);
+                return true;
+              }
+            } 
+          } 
+        } 
+
         return false;
+
     }
 
 
@@ -56,7 +130,26 @@ public class Jeroo extends JerooBase {
      */
     public void carpetRoom()
     {
+      carpetHelper();
+      carpetHelper();
+      carpetHelper();
 
+    }
+    public boolean carpetHelper(){
+      if(isWater(AHEAD));{
+      turn(LEFT);
+        if(isWater(AHEAD));{
+        turn(LEFT);
+          if(isWater(AHEAD));{
+            turn(LEFT);
+            plant();
+          }
+        }
+      }
+    }
+    
+      
+        
     }
 
 
